@@ -130,3 +130,12 @@ foreach(_remaining ${ROOT_FIND_COMPONENTS})
     endif()
     unset(ROOT_FIND_REQUIRED_${_remaining})
 endforeach()
+
+
+#----------------------------------------------------------------------------
+# Make sure the targets have the correct include directory
+# Only needed on Core since other targets inherit from that.
+#
+set_property(TARGET ROOT::Core PROPERTY
+    INTERFACE_INCLUDE_DIRECTORIES "${ROOT_INCLUDE_DIRS}")
+
